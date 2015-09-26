@@ -1,0 +1,6 @@
+.form-group{
+	padding-bottom: 1px;
+}
+form input[type="password"], form input[type="text"]{
+	width: 100%
+}
