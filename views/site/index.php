@@ -22,38 +22,114 @@ $this->title = 'RolenWeb Admin';
 
                         <div class="body-content">
                             <?= $this->render('rendering/_flashmessage'); ?>
+                            
                             <div class="row">
-
-                                <div class="col-lg-4">
-                                    <h2>Heading</h2>
-
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                        fugiat nulla pariatur.</p>
-
-                                    <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-                                </div>
-                                <div class="col-lg-4">
-                                    <h2>Heading</h2>
-
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                        fugiat nulla pariatur.</p>
-
-                                    <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-                                </div>
-                                <div class="col-lg-4">
-                                    <h2>Heading</h2>
-
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                        fugiat nulla pariatur.</p>
-
-                                    <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-                                </div>
+                              <div class="col-sm-12">
+                                <?=
+\dosamigos\highcharts\HighCharts::widget([
+    'clientOptions' => [
+        'chart' => [
+                'type' => 'line'
+        ],
+        'title' => [
+             'text' => 'Статистика подключений заведений за месяц'
+             ],
+        'xAxis' => [
+            'categories' => [
+                '1',
+                '2',
+                '3',
+                '4',
+                '5',
+                '6',
+                '7',
+            ]
+        ],
+        'yAxis' => [
+            'title' => [
+                'text' => 'Заведений'
+            ]
+        ],
+        'series' => [
+            ['name' => 'День', 'data' => [112,212,412,123,123,321,213]],
+            
+        ]
+    ]
+]);
+?>
+                              </div>
+                            </div>
+                            <div class="row top10">
+                              <div class="col-sm-12">
+                                <?=
+\dosamigos\highcharts\HighCharts::widget([
+    'clientOptions' => [
+        'chart' => [
+                'type' => 'line'
+        ],
+        'title' => [
+             'text' => 'Статистика подключений роутеров за месяц'
+             ],
+        'xAxis' => [
+            'categories' => [
+                '1',
+                '2',
+                '3',
+                '4',
+                '5',
+                '6',
+                '7',
+            ]
+        ],
+        'yAxis' => [
+            'title' => [
+                'text' => 'Роутеры'
+            ]
+        ],
+        'series' => [
+            ['name' => 'День', 'data' => [112,212,412,123,123,321,213]],
+            
+        ]
+    ]
+]);
+?>
+                              </div>
+                            </div>                            
+                        <div class="row top10">
+                              <div class="col-sm-12">
+                                <?=
+\dosamigos\highcharts\HighCharts::widget([
+    'clientOptions' => [
+        'chart' => [
+                'type' => 'line'
+        ],
+        'title' => [
+             'text' => 'Статистика постов заведений за месяц'
+             ],
+        'xAxis' => [
+            'categories' => [
+                '1',
+                '2',
+                '3',
+                '4',
+                '5',
+                '6',
+                '7',
+            ]
+        ],
+        'yAxis' => [
+            'title' => [
+                'text' => 'Посты'
+            ]
+        ],
+        'series' => [
+            ['name' => 'День', 'data' => [112,212,412,123,123,321,213]],
+            
+        ]
+    ]
+]);
+?>
+                              </div>
                             </div>
 
                         </div>

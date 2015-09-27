@@ -22,6 +22,7 @@ class AppAsset extends AssetBundle
         '_layout/styles.css',
         '_themes/default.css',
         'http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold|PT+Sans+Narrow:regular,bold|Droid+Serif:iamp;v1',
+        'css/font-awesome.min.css',
 
     ];
     public $js = [

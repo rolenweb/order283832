@@ -46,6 +46,14 @@ $config = [
             'rules' => [
                 '' => 'site/index',
                 'profile/<id:\d+>' => 'site/profile',
+                'deleteuser/<id:\d+>' => 'site/deleteuser',
+                'password/<id:\d+>' => 'site/password',
+                'object/<id:\d+>' => 'site/object',
+                'deleteobject/<id:\d+>' => 'site/deleteobject',
+                'router/<id:\d+>' => 'site/router',
+                'deleterouter/<id:\d+>' => 'site/deleterouter',
+                'post/<id:\d+>' => 'site/post',
+                'deletepost/<id:\d+>' => 'site/deletepost',
                 '<action>'=>'site/<action>',
 
 

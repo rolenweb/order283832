@@ -1,10 +1,11 @@
 <?php
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use dosamigos\tinymce\TinyMce;
 
 /* @var $this yii\web\View */
 
-$this->title = 'Профиль пользователя '.$model->username;
+$this->title = 'Редактивание поста '.$model->id;
 ?>
 <body>
 
@@ -21,61 +22,56 @@ $this->title = 'Профиль пользователя '.$model->username;
                         <div class="body-content">
                             <?= $this->render('rendering/_flashmessage'); ?>
                             <div class="row">
-                                <div class="col-md-6 col-md-offset-3">
-                                    <h3 class="text-center">Профиль пользователя <?= Html::encode($model->username) ?></h3>
+                                <div class="col-md-12">
+                                    <h3 class="text-center"><?= Html::encode($this->title) ?></h3>
                                     <div class="form">
                                         <?php $form = ActiveForm::begin(['id' => 'form-profile']); ?>
                                         <div class="form-group">
                                                 
                                                 <div class="col-md-12">
-                                                  <?= $form->field($model, 'email')->textInput(['placeholder' => 'Электронная почта', 'class' => 'form-control'])->label(false) ?>
+                                                  <?= $form->field($model, 'urlimg')->textInput(['placeholder' => 'Урл картинки', 'class' => 'form-control'])->label(false) ?>
                                                 </div>
                                         </div>
-                                        <div class="form-group">
-                                                
-                                                <div class="col-md-12">
-                                                  <?= $form->field($model, 'firstname')->textInput(['placeholder' => 'Имя', 'class' => 'form-control'])->label(false) ?>
-                                                </div>
-                                        </div>
-                                        <div class="form-group">
-                                                
-                                                <div class="col-md-12">
-                                                  <?= $form->field($model, 'secondname')->textInput(['placeholder' => 'Фамилия', 'class' => 'form-control'])->label(false) ?>
-                                                </div>
-                                        </div>
-<?php
-if (Yii::$app->user->identity->role == 10) {
-?>
-                                        <div class="form-group">
-                                                
-                                                <div class="col-md-12">
-                                                  <?= $form->field($model, 'role')->dropDownList([ 1 => 'Пользователь', 5 => 'Менеджер', 10 => 'Админ',])->label(false) ?>
-                                                </div>
-                                        </div>
-<?php
-}
-?>
 
+                                        <div class="form-group">
+                                                
+                                                <div class="col-md-12">
+                                                  <?= $form->field($model, 'id_router')->dropDownList($arrayrouter)->label(false) ?>
+                                                </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                                
+                                                <div class="col-md-12">
+                                                  <?= $form->field($model, 'text')->widget(TinyMce::className(), [
+    'options' => ['rows' => 12],
+    'language' => 'ru',
+    'clientOptions' => [
+        'plugins' => [
+            "advlist autolink lists link charmap print preview anchor",
+            "searchreplace visualblocks code fullscreen",
+            "insertdatetime media image table contextmenu paste"
+        ],
+        'toolbar' => "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+        'image_advtab' => true,
+    ]
+])->label(false); ?>
+                                                </div>
+                                        </div>
 <?php
-if (Yii::$app->user->identity->role == 10) {
+if (Yii::$app->user->identity->role = 10) {
     
 ?>
                                         <div class="form-group">
                                                 
                                                 <div class="col-md-12">
-                                                  <?= $form->field($model, 'id_manager')->dropDownList($arraymanager, ['prompt' => 'Нет менеджера'])->label(false) ?>
-                                                </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                                
-                                                <div class="col-md-12">
-                                                  <?= $form->field($model, 'status')->dropDownList([5 => 'Заблокирован', 10 => 'Активный'])->label(false) ?>
+                                                  <?= $form->field($model, 'status')->dropDownList([5 => 'Заблокировано', 10 => 'Активное'])->label(false) ?>
                                                 </div>
                                         </div>
 <?php
 }
-?>
+?>                                         
+                                        
                                         <div class="form-group">
                                               <div class="col-md-12 text-center"> 
                                                 <?= Html::submitButton('Сохранить', ['class' => 'btn btn-default', 'name' => 'profile-button']) ?>
@@ -85,18 +81,7 @@ if (Yii::$app->user->identity->role == 10) {
                                     </div>
                                 </div>
                             </div>
-<?php
-if(Yii::$app->user->identity->id == $model->id){
-?>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-12 text-center">
-                                    <?= Html::a('Сменить пароль', ['password', 'id' => $model->id], ['class' => 'btn btn-default']) ?>
-                                </div>
-                            </div>
-<?php    
-}
-?>                            
+                      
 
 
                         </div>

@@ -10,9 +10,12 @@ use yii\base\Model;
 class Password extends Model
 {
     
+    public $username;
     public $password;
     public $new_password;
     public $new_password_repeat;
+
+    private $_user = false;
 
 
 
@@ -24,6 +27,7 @@ class Password extends Model
         return [
             [['password', 'new_password', 'new_password_repeat'], 'required'],
             ['password', 'validatePassword'],
+            ['password', 'string', 'min' => 6],
 
             ['new_password', 'string', 'min' => 6],
 
@@ -64,20 +68,7 @@ class Password extends Model
         }
     }
 
-    /**
-     * Logs in a user using the provided username and password.
-     *
-     * @return boolean whether the user is logged in successfully
-     */
-    public function login()
-    {
-        if ($this->validate()) {
-            return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
-        } else {
-            return false;
-        }
-    }
-
+   
     /**
      * Finds user by [[username]]
      *
